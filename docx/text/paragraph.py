@@ -39,6 +39,16 @@ class Paragraph(Parented):
             run.style = style
         return run
 
+    def add_omath(self, text=None):
+        """
+        Append an omath to this paragraph containing *text*.
+        """
+        om = self._p.add_om()
+        omath = oMath(om, self)
+        if text:
+            omath.text = text
+        return omath
+
     @property
     def alignment(self):
         """
